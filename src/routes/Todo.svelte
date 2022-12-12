@@ -1,33 +1,29 @@
 <script>
-    export let id = 0;
+    export let id;
     export let check = false;
     export let description = "";
 
-   let value = check;
-
     import { todos } from "./store";
+
     function deleteToDo() {
         $todos = $todos.filter(obj => obj.id !== id);
-        console.log("11111111")
-        console.log($todos);
     }
 
     function completeToDo() {
-        console.log("22222222");
         for (const i of $todos) {
             if (i.id == id) {
-                i.check = value;
+                i.check = check;
             }
         }
     }
 </script>
 
 <label>
-	<input type=checkbox bind:checked={value} on:change={completeToDo}>
-    {#if value}
-	    <s>{description}</s>
+    <input type=checkbox bind:checked={check} on:change={completeToDo}>
+    {#if check}
+        <s>{description}</s>
     {:else}
-	    {description}
+        {description}
     {/if}
     <button on:click={deleteToDo}>Delete</button>
     <br/>
