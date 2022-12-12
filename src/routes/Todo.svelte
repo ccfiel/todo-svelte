@@ -1,5 +1,9 @@
 <script>
-    export let id;
+
+    /**
+	 * @type {any}
+	 */
+     export let id;
     export let check = false;
     export let description = "";
 
